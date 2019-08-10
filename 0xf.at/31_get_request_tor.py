@@ -5,6 +5,10 @@ from stem.control import Controller
 from scapy.all import *
 
 
+# This script visits a url using tor network and changing identity for every
+# visit
+
+
 def visit(url, times):
     for i in range(times):
         with Controller.from_port(port = 9051) as controller:
@@ -21,7 +25,14 @@ def visit(url, times):
 
 
 def main():
-    visit('https://www.0xf.at/data/imgs/66b43ad6d3f3560b210c1f94171dee61.jpg', 50)
+    if len(argv) != 3:
+        print('Usage: ./%s <url> <times>' % argv[0])
+        exit(1)
+
+    url = argv[1]
+    times = argv[2]
+
+    visit(url, times)
 
 
 if __name__ == '__main__':
