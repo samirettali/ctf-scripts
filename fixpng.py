@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import struct
 import zlib
-from binascii import hexlify, unhexlify
+from binascii import unhexlify
 from difflib import get_close_matches
 from sys import argv
 
@@ -86,6 +86,7 @@ def check_chunk(f, length=None):
 
     print('')
 
+
 def main():
     if len(argv) != 3:
         print('Usage: ./%s <file> <output>' % argv[0])
@@ -99,6 +100,7 @@ def main():
     out_file = open(argv[2], 'wb')
     fix(argv[1])
     print('Fixing done')
+
 
 if __name__ == '__main__':
     main()
